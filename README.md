@@ -3,7 +3,9 @@
 A small godot project with a tokenizer written in GDScript.
 
 ## Screenshots
-_TODO_
+
+![Screenshot showing grep working with piped output](screenshot_1.png)
+![Screenshot showing base64 in piped commands](screenshot_2.png)
 
 ## Details
 
@@ -30,6 +32,7 @@ You may need to define a few more tokens thought.
 
 ## Files
 
+Some important files/directories:
 `./cmd`  
 `./cmd/BashLikeCommands.gd` _(class that provides a few example bash commands)_  
 `./cmd/CommandParser.gd` _(class containing the tokenizer and a method to execute results)_  
