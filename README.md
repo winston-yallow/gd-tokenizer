@@ -54,12 +54,12 @@ var commands := BashLikeCommands.new()
 
 func _ready():
 
-    # Parse and execute on of the bash like commands: echo
+    # Parse and execute one of the bash like commands: echo
     var result := parser.tokenize("echo 'Hello world!'")
     var stdout := parser.execute(result, [self, commands], "%s")
     print(stdout)
     
-    # Parse and execute the command defined below
+    # Parse and execute the command 'hello' defined below
     var result := parser.tokenize("hello 'godot'")
     var stdout := parser.execute(result, [self, commands], "%s")
     print(stdout)
