@@ -30,13 +30,13 @@ You may need to define a few more tokens thought.
 
 ## Files
 
-- `cmd`
-  - `BashLikeCommands.gd` _(class that provides a few example bash commands)_
-  - `CommandParser.gd` _(class containing the tokenizer and a method to execute results)_
-- `fonts`
-  - `fira-code` _(directory containing the monospace font I use for the terminal)_
-- `ExampleTerminal.tscn` _(scene with a minimalistic terminal setup)_
-- `ExampleTerminal.gd` _(implements the behaviour of the terminal scene)_
+`./cmd`
+`./cmd/BashLikeCommands.gd` _(class that provides a few example bash commands)_
+`./cmd/CommandParser.gd` _(class containing the tokenizer and a method to execute results)_
+`./fonts`
+`./fonts/fira-code` _(directory containing the monospace font I use for the terminal)_
+`./ExampleTerminal.tscn` _(scene with a minimalistic terminal setup)_
+`./ExampleTerminal.gd` _(implements the behaviour of the terminal scene)_
 
 ## Usage
 
