@@ -53,9 +53,24 @@ var parser := CommandParser.new()
 var commands := BashLikeCommands.new()
 
 func _ready():
+
+    # Parse and execute on of the bash like commands: echo
     var result := parser.tokenize("echo 'Hello world!'")
-    var stdout := parser.execute(result, [commands], "%s")
+    var stdout := parser.execute(result, [self, commands], "%s")
     print(stdout)
+    
+    # Parse and execute the command defined below
+    var result := parser.tokenize("hello 'godot'")
+    var stdout := parser.execute(result, [self, commands], "%s")
+    print(stdout)
+
+func cmd_hello(args: Array, stdin: String):
+    if args.size() == 0:
+        return "Hello unknown person!"
+    elif args.size() == 1:
+        return "Hello %s!"
+    else:
+        return "Error: too many arguments"
 ```
 
 ### Use the tokenizer and executor
