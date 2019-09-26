@@ -4,8 +4,8 @@ A small godot project with a tokenizer written in GDScript.
 
 ## Screenshots
 
-![Screenshot showing grep working with piped output](screenshot_1.png)
-![Screenshot showing base64 in piped commands](screenshot_2.png)
+![Screenshot showing grep working with piped output](screenshot_2.png)
+![Screenshot showing base64 in piped commands](screenshot_1.png)
 
 ## Details
 
