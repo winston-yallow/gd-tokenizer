@@ -1,6 +1,6 @@
 # GD-Tokenizer
 
-A small godot project with a tokenizer written in GDScript.
+A small godot project with a (very simple) tokenizer written in GDScript.
 
 ## Screenshots
 
