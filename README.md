@@ -10,9 +10,9 @@ A small godot project with a (very simple) tokenizer written in GDScript.
 ## Details
 
 This project includes:
-- terminal to input bash like commands
-- very naive and simple tokenizer
-- method to execute the result of the tokenizer
+- a terminal to input bash like commands
+- a very naive and simple tokenizer
+- a method to execute the result of the tokenizer
 
 Features:
 - string support (double and single quoted)
@@ -21,14 +21,14 @@ Features:
 - command piping with `|` (reuse command output as the input for the next command)
 
 What this currently can not do:
-- no flow control structures like `if`, `for` or `while`
-- no conecpt of subshells
+- flow control structures like `if`, `for` or `while`
+- subshells
 
-Ther tokenizer is seperated from the execution/parsing. It should be 
+The tokenizer is seperated from the execution/parsing. It should be 
 relatively easy to implement your own execution method. If you want
-to support things like `if`, `for` or `while` you could implement that
+to support things like `if`, `for` or `while` you could implement these
 in the execution method, there is no need to change the tokenizing method.
-You may need to define a few more tokens thought.
+You may need to define a few more tokens though.
 
 ## Files
 
@@ -73,12 +73,12 @@ func cmd_hello(args: Array, stdin: String):
         return "Error: too many arguments"
 ```
 
-### Use the tokenizer and executor
+### Tokenizer and executor method
 
-The most important file is `./cmd/CommandParser.gd`. This is where the methods
-for tokenization and execution are defined.
+The most important file is `./cmd/CommandParser.gd`. This is where the tokenization
+and execution methods are defined.
 
-To use this file you need to create a parser object with `var parser := CommandParser.new()`.
+To use the class file you need to create a parser object with `var parser := CommandParser.new()`.
 
 It provides two important methods:
 
@@ -99,12 +99,12 @@ Arguments:
 - `err_tpl`: String (where `%s` represents the error)
 - `pre`: String
 
-This method takes a TokenizedResult and tries to execute it. You need to provide
-a list of command providers and an error template. The template is used to 
-format errors, the simplest possible one is `'%s'` (which simply is the error).
+This method takes a TokenizedResult and tries to execute it. You need to call `execute()`
+using a list of command providers and an error template. The template is used to 
+format errors, the simplest possible of which is `'%s'` (which simply represents only the error itself).
 A command provider can implement commands by defining methods that start with
 `cmd_`. This prefix can be changed with an optional parameter. If you want to use
-the bash like commands please add an instance of `BashLikeCommands` to the command
+the bash like commands, you can add an instance of `BashLikeCommands` to the command
 provider list.
 
 # License
@@ -116,7 +116,7 @@ The font used in the Terminal is named "fira-code". Please see the [License File
 
 # Links to other projects
 
-All links in this section point to awesome external projects.
+All links in this section point to amazing external projects.
 These are not created by me.
 
 - [Godot Engine](https://godotengine.org/)
