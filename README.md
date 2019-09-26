@@ -33,6 +33,7 @@ You may need to define a few more tokens thought.
 ## Files
 
 Some important files/directories:
+
 `./cmd`  
 `./cmd/BashLikeCommands.gd` _(class that provides a few example bash commands)_  
 `./cmd/CommandParser.gd` _(class containing the tokenizer and a method to execute results)_  
