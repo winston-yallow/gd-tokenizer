@@ -21,3 +21,14 @@ Features:
 What this currently can not do:
 - no flow control structures like `if`, `for` or `while`
 - no conecpt of subshells
+
+## Files
+
+- `cmd`
+  - `BashLikeCommands.gd` _(class that provides a few example bash commands)_
+  - `CommandParser.gd` _(class containing the tokenizer and a method to execute results)_
+- `fonts`
+  - `fira-code` _(directory containing the monospace font I use for the terminal)_
+- `ExampleTerminal.tscn` _(scene with a minimalistic terminal setup)_
+- `ExampleTerminal.gd` _(implements the behaviour of the terminal scene)_
+
