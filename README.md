@@ -43,6 +43,20 @@ Some important files/directories:
 
 ## Usage
 
+### Minimal Example
+
+```gdscript
+extends Node
+
+var parser := CommandParser.new()
+var commands := BashLikeCommands.new()
+
+func _ready():
+    var result := parser.tokenize("echo 'Hello world!'")
+    var stdout := parser.execute(result, [commands], "%s")
+    print(stdout)
+```
+
 ### Use the tokenizer and executor
 
 The most important file is `./cmd/CommandParser.gd`. This is where the methods
