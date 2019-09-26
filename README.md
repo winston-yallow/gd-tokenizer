@@ -43,8 +43,41 @@ Some important files/directories:
 
 ## Usage
 
-TODO:
-- how to use the tokenizer/executor as it is
+### Use the tokenizer and executor
+
+The most important file is `./cmd/CommandParser.gd`. This is where the methods
+for tokenization and execution are defined.
+
+To use this file you need to create a parser object with `var parser := CommandParser.new()`.
+
+It provides two important methods:
+
+#### `CommandParser.tokenize(input)`
+
+Arguments:
+- `input`: String
+
+This method will tokenize your input.
+
+Returns: object of type TokenizedResult
+
+#### `CommandParser.execute()`
+
+Arguments:
+- `tr`: TokenResult
+- `providers`: Array of Objects
+- `err_tpl`: String (where `%s` represents the error)
+- `pre`: String
+
+This method takes a TokenizedResult and tries to execute it. You need to provide
+a list of command providers and an error template. The template is used to 
+format errors, the simplest possible one is `'%s'` (which simply is the error).
+A command provider can implement commands by defining methods that start with
+`cmd_`. This prefix can be changed with an optional parameter. If you want to use
+the bash like commands please add an instance of `BashLikeCommands` to the command
+provider list.
+
+## TODO (Add to this readme later)
 - how to define your own tokens
 - how to write your own executor (maybe?)
 
