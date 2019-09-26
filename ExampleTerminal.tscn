@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ExampleTerminal.gd" type="Script" id=1]
+[ext_resource path="res://fonts/fira-code/fira_code_regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/fira-code/fira_code_bold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/fira-code/fira_code_light.tres" type="DynamicFont" id=4]
+
+[node name="ExampleTerminal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -55.0
+focus_mode = 2
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0.713726, 0.713726, 0.713726, 1 )
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="LineEdit" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -45.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
