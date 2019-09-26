@@ -91,6 +91,21 @@ A command provider can implement commands by defining methods that start with
 the bash like commands please add an instance of `BashLikeCommands` to the command
 provider list.
 
+# License
+
+All files (except the fonts in `./fonts/fira-code`) are licensed by the MIT License.
+Please see the [License File](LICENSE) for more details.
+
+The font used in the Terminal is named "fira-code". Please see the [License File](fonts/fira-code/OFL.txt) for more details.
+
+# Links to other projects
+
+All links in this section point to awesome external projects.
+These are not created by me.
+
+- [Godot Engine](https://godotengine.org/)
+- [Fira Code Font](https://github.com/tonsky/FiraCode)
+
 ## TODO (Add to this readme later)
 - how to define your own tokens
 - how to write your own executor (maybe?)
