@@ -89,7 +89,7 @@ Arguments:
 
 This method will tokenize your input.
 
-Returns: object of type TokenizedResult
+Returns: object of type `CommandParser.TokenizedResult`
 
 #### `CommandParser.execute()`
 
@@ -106,6 +106,18 @@ A command provider can implement commands by defining methods that start with
 `cmd_`. This prefix can be changed with an optional parameter. If you want to use
 the bash like commands, you can add an instance of `BashLikeCommands` to the command
 provider list.
+
+#### `CommandParser.TokenizedResult`
+
+This class is only used to hold data. It is returned by the tokenization method and
+can be passed directly into the execution method.
+
+Properties:
+- `tokens`: Array (all successfully parsed tokens)
+- `consumed`: int (number of characters that were consumed)
+- `success`: bool (indicating if everything went well or if there was an error)
+- `error`: String (error message if any)
+- `remaining`: String (remaining non-tokenized characters if any)
 
 # License
 
