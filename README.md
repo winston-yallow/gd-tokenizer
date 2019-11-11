@@ -50,18 +50,24 @@ Some important files/directories:
 extends Node
 
 var parser := CommandParser.new()
-var commands := BashLikeCommands.new()
+var bash_commands := BashLikeCommands.new()
 
 func _ready():
-
+    
+    # Define our list of command providers. A command provider is
+    # an object with methods for commands. The default method
+    # name prefix is "cmd_". Here we want to use the bash like 
+    # commands as well as the commands defined in this class.
+    command_providers := [self, bash_commands]
+    
     # Parse and execute one of the bash like commands: echo
     var result := parser.tokenize("echo 'Hello world!'")
-    var stdout := parser.execute(result, [self, commands], "%s")
+    var stdout := parser.execute(result, command_providers, "%s")
     print(stdout)
     
     # Parse and execute the command 'hello' defined below
-    var result := parser.tokenize("hello 'godot'")
-    var stdout := parser.execute(result, [self, commands], "%s")
+    var result := parser.tokenize("hello 'Godot Engine'")
+    var stdout := parser.execute(result, command_providers, "%s")
     print(stdout)
 
 func cmd_hello(args: Array, stdin: String):
