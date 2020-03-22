@@ -88,7 +88,7 @@ func tokenize_string(input: String, current: int) -> Token:
         while true:
             if (current + consumed) >= len(input):
                 # Return an error if we reach the end of input without finding
-                # a cliosing quote_char
+                # a closing quote_char
                 return TokenError.new('unterminated string')
             var c = input[current + consumed]
             consumed += 1
