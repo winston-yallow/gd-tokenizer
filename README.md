@@ -50,18 +50,24 @@ Some important files/directories:
 extends Node
 
 var parser := CommandParser.new()
-var commands := BashLikeCommands.new()
+var bash_commands := BashLikeCommands.new()
 
 func _ready():
-
+    
+    # Define our list of command providers. A command provider is
+    # an object with methods for commands. The default method
+    # name prefix is "cmd_". Here we want to use the bash like 
+    # commands as well as the commands defined in this class.
+    command_providers := [self, bash_commands]
+    
     # Parse and execute one of the bash like commands: echo
     var result := parser.tokenize("echo 'Hello world!'")
-    var stdout := parser.execute(result, [self, commands], "%s")
+    var stdout := parser.execute(result, command_providers, "%s")
     print(stdout)
     
     # Parse and execute the command 'hello' defined below
-    var result := parser.tokenize("hello 'godot'")
-    var stdout := parser.execute(result, [self, commands], "%s")
+    var result := parser.tokenize("hello 'Godot Engine'")
+    var stdout := parser.execute(result, command_providers, "%s")
     print(stdout)
 
 func cmd_hello(args: Array, stdin: String):
@@ -89,7 +95,7 @@ Arguments:
 
 This method will tokenize your input.
 
-Returns: object of type TokenizedResult
+Returns: object of type `CommandParser.TokenizedResult`
 
 #### `CommandParser.execute()`
 
@@ -106,6 +112,18 @@ A command provider can implement commands by defining methods that start with
 `cmd_`. This prefix can be changed with an optional parameter. If you want to use
 the bash like commands, you can add an instance of `BashLikeCommands` to the command
 provider list.
+
+#### `CommandParser.TokenizedResult`
+
+This class is only used to hold data. It is returned by the tokenization method and
+can be passed directly into the execution method.
+
+Properties:
+- `tokens`: Array (all successfully parsed tokens)
+- `consumed`: int (number of characters that were consumed)
+- `success`: bool (indicating if everything went well or if there was an error)
+- `error`: String (error message if any)
+- `remaining`: String (remaining non-tokenized characters if any)
 
 # License
 

@@ -59,48 +59,69 @@ class TokenEmpty extends Token:
 
 
 func tokenize_identifier(input: String, current: int) -> Token:
+    # Tries to parse a string consisting only of characters from allowed_chars
     var consumed := 0
     var value := ''
     while (current + consumed) < len(input) and input[current + consumed] in allowed_chars:
         value += input[current + consumed]
         consumed += 1
     if consumed > 0:
+        # This is a valid identifier as more than one character was consumed.
+        # Return it as TokenString
         return TokenString.new(consumed, value)
     else:
+        # Return that no match was found
         return TokenEmpty.new()
 
 
 func tokenize_string(input: String, current: int) -> Token:
+    # Tries to parse a string that starts and ends with " (or '). The string
+    # itself can contain any character except the string delimiter.
+    # This uses the first character of the input as delimiter and checks
+    # wheather it is valid. By saving this in quote_char we can parse until
+    # the next quote_char is detected.
     var quote_char := input[current] as String
     if quote_char in ["'", '"']:
         var value := ''
         var consumed := 1
+        # Iterate all characters of input until we find the closing quote_char
         while true:
             if (current + consumed) >= len(input):
+                # Return an error if we reach the end of input without finding
+                # a closing quote_char
                 return TokenError.new('unterminated string')
             var c = input[current + consumed]
             consumed += 1
             if c == quote_char:
+                # Return the found string value (without the quotes)
                 return TokenString.new(consumed, value)
             value += c
+    # Return that no match was found if nothing else was returned
     return TokenEmpty.new()
 
 
 func tokenize_skip_whitespace(input: String, current: int) -> Token:
+    # Tries to parse whitespace to skip it. Whitespace is only used to 
+    # seperate tokens and should not be parsed as a token on its own.
     if input[current] in [' ', '\t']:
         return TokenSkip.new(1)
+    # Return that no match was found if there is no whitespace to skip
     return TokenEmpty.new()
 
 
 func tokenize_pipe(input: String, current: int) -> Token:
+    # Try to parse the pipe character
     if input[current] == '|':
         return TokenPipe.new(1)
+    # Return that no match was found if this is not a pipe operator
     return TokenEmpty.new()
 
 
 func tokenize_command_end(input: String, current: int) -> Token:
+    # Try to parse the command delimiter
     if input[current] in [';', '\n']:
         return TokenCommandEnd.new(1)
+    # Return that no match was found if this is not a command delimiter
     return TokenEmpty.new()
 
 
